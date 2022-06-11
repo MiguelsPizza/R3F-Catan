@@ -22,7 +22,6 @@ const calculateBoardPositions = (size) => {
       Object.keys(tileTypes)[
         Math.floor(Math.random() * Object.keys(tileTypes).length)
       ];
-      console.log(randomKey);
     const tileType = randomKey;
     tileTypes[randomKey]--;
 
