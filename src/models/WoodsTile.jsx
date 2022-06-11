@@ -6,7 +6,7 @@ import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
 
-export default function Model({ position, color }) {
+export default function WoodsTile({ position, color }) {
   const { nodes, materials } = useGLTF("/glbFiles/KatanPiece.gltf");
   const ref = useRef();
 

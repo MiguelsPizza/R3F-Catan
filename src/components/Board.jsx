@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useControls } from "leva";
-import KatanPiece from "../models/KatanPiece";
+import WoodsTile from "../models/WoodsTile";
 import { calculateBoardPositions } from "../helperFunctions/BoardSetupFunctions";
 
 function Board() {
@@ -16,7 +16,7 @@ function Board() {
   return (
     <>
       {tiles.map((piece, i) => (
-        <KatanPiece key={i} position={piece} color={color} />
+        <WoodsTile key={i} position={piece} color={color} />
       ))}
     </>
   );
