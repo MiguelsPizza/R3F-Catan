@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Physics } from "@react-three/cannon";
-import { Sky, OrbitControls, Html } from "@react-three/drei";
+import { Physics } from "@react-three/cannon";//not currently being used
+import { Sky, OrbitControls } from "@react-three/drei";
 import Baseball from "./models/Baseball";
 import "./App.css";
 import Board from "./components/Board";
