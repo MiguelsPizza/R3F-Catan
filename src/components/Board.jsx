@@ -1,22 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useControls } from "leva";
 import KatanPiece from "../models/KatanPiece";
-import funcs  from "../helperFunctions/BoardSetupFunctions";
-const {mockApiResponseForBoardPositions, calculateBoardPositions} = funcs;
-
+import { calculateBoardPositions } from "../helperFunctions/BoardSetupFunctions";
 
 function Board() {
-  const [pieces, setPieces] = useState([]);
+  const [tiles, setTiles] = useState([]);
   const { size, color } = useControls({ size: 45, color: "#4acf59" });
+
+  const mappedPositions = useMemo(() => calculateBoardPositions(size), [size]);
+
   useEffect(() => {
-    const positions = mockApiResponseForBoardPositions();
-    const mappeddPositions = calculateBoardPositions(positions, size);
-    setPieces(mappeddPositions);
+    setTiles(mappedPositions);
   }, []);
 
   return (
     <>
-      {pieces.map((piece, i) => (
+      {tiles.map((piece, i) => (
         <KatanPiece key={i} position={piece} color={color} />
       ))}
     </>
@@ -24,7 +23,3 @@ function Board() {
 }
 
 export default Board;
-
-
-
-
