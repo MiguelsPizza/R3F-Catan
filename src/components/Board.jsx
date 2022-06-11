@@ -6,19 +6,18 @@ function Board() {
   const [pieces, setPieces] = useState([]);
   const { size, color } = useControls({ size: 45, color: "#4acf59" });
   useEffect(() => {
-    const positions = [
-      [0, 0],
-      [1, 0],
-      [0, 1],
-      [-1, 1],
-      [0, -1],
-      [-1, 0],
-      [1, -1],
-    ];
+    const positions = [];
+    for (let i = -2; i <= 2; i++) {
+      for (let j = -2; j <= 2; j++) {
+        if (i + j < 3 && i + j > -3) {
+          positions.push([i, j]);
+        }
+      }
+    }
+
     setPieces(
       positions.map((pos) => {
-        const q = pos[0];
-        const r = pos[1];
+        const [q, r] = pos;
         return [
           ((q * 3) / 2) * size,
           0,
