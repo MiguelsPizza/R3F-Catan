@@ -1,19 +1,36 @@
-
-
 const calculateBoardPositions = (size) => {
-  const tileTypes = ['sheep', 'sheep','sheep', 'sheep', 'woods', 'woods', 'woods', 'woods', 'wheat', 'wheat', 'wheat', 'wheat', 'brick', 'brick', 'brick', 'ore', 'ore', 'ore', 'desert'];
+  const tileTypes = {
+    sheep: 4,
+    brick: 3,
+    wheat: 4,
+    woods: 4,
+    desert: 1,
+    ore: 3,
+  };
 
   const positions = mockApiResponseForBoardPositions();
   const mappedPositions = positions.map((pos) => {
     const [q, r] = pos;
+
     const position = [
       ((q * 3) / 2) * size,
       0,
       size * ((Math.sqrt(3) / 2) * q + Math.sqrt(3) * r),
     ];
-    const tileType = tileTypes[Math.floor(Math.random() * tileTypes.length)];
 
-    return {position, tileType};
+    const randomKey =
+      Object.keys(tileTypes)[
+        Math.floor(Math.random() * Object.keys(tileTypes).length)
+      ];
+      console.log(randomKey);
+    const tileType = randomKey;
+    tileTypes[randomKey]--;
+
+    if (tileTypes[randomKey] === 0) {
+      delete tileTypes[randomKey];
+    }
+
+    return { position, tileType };
   });
   return mappedPositions;
 };
