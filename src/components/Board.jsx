@@ -1,6 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
 import { useControls } from "leva";
 import WoodsTile from "../models/WoodsTile";
+import OreTile from "../models/OreTile";
+import BrickTile from "../models/BrickTile";
+import SheepTile from "../models/SheepTile";
+import WheatTile from "../models/WheatTile";
+import DesertTile from "../models/DesertTile";
+
 import { calculateBoardPositions } from "../helperFunctions/BoardSetupFunctions";
 
 function Board() {
@@ -16,31 +22,21 @@ function Board() {
   return (
     <>
       {tiles.map((piece, i) => {
+        console.log(piece.tileType);
         switch (piece.tileType) {
           case "woods":
-            return (
-              <WoodsTile key={i} position={piece.position} color="green" />
-            );
+            return <WoodsTile key={i} position={piece.position} />;
           case "ore":
-            return (
-            <WoodsTile key={i} position={piece.position} color="grey" />
-            );
+            return <OreTile key={i} position={piece.position} />;
           case "brick":
-            return (
-              <WoodsTile key={i} position={piece.position} color="brown" />
-            );
+            return <BrickTile key={i} position={piece.position} />;
           case "sheep":
-            return (
-              <WoodsTile key={i} position={piece.position} color="white" />
-            );
+            return <SheepTile key={i} position={piece.position} />;
           case "wheat":
-            return (
-              <WoodsTile key={i} position={piece.position} color="yellow" />
-            );
+            return <WheatTile key={i} position={piece.position} />;
           case "desert":
-            return (
-              <WoodsTile key={i} position={piece.position} color="#f5f5f5" />
-            );
+            return <DesertTile key={i} position={piece.position} />;
+            s;
           default:
             return null;
         }
