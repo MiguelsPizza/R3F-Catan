@@ -9,10 +9,11 @@ function App() {
   return (
     <div className="anim">
       <Suspense fallback={null}>
-        <Canvas camera={{ position: [0, 10, 40], fov: 50 }}>
+        <Canvas camera={{ position: [0, 10, 50], fov: 50 }}>
           <Physics>
             <Sky />
-            <OrbitControls />
+            <OrbitControls makedefualt />
+            <ambientLight intensity={0.2} />
             <spotLight position={[0, 10, 200]} />
             <Board />
           </Physics>

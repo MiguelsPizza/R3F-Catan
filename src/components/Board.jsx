@@ -6,6 +6,7 @@ import BrickTile from "../models/BrickTile";
 import SheepTile from "../models/SheepTile";
 import WheatTile from "../models/WheatTile";
 import DesertTile from "../models/DesertTile";
+import Road from "./Road";
 
 import { calculateBoardPositions } from "../helperFunctions/BoardSetupFunctions";
 
@@ -21,8 +22,8 @@ function Board() {
 
   return (
     <>
+    <Road/>
       {tiles.map((piece, i) => {
-        console.log(piece.tileType);
         switch (piece.tileType) {
           case "woods":
             return <WoodsTile key={i} position={piece.position} />;
@@ -36,7 +37,6 @@ function Board() {
             return <WheatTile key={i} position={piece.position} />;
           case "desert":
             return <DesertTile key={i} position={piece.position} />;
-            s;
           default:
             return null;
         }
